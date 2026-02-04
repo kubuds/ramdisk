@@ -1,0 +1,14 @@
+#!/bin/sh
+${CVI_SHOPTS}
+
+case "$1" in
+start)
+	hciattach -p /dev/ttyS2 any 1500000 > /var/run/hciattach.pid
+	exit $?
+	;;
+stop)
+	if [ -f /var/run/hciattach.pid ]; then
+		kill "$(cat /var/run/hciattach.pid)"
+		rm /var/run/hciattach.pid
+	fi
+esac
