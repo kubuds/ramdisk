@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$1" in
+start)
+	echo host > /proc/cviusb/otg_role
+	;;
+esac
+
+exit $?
