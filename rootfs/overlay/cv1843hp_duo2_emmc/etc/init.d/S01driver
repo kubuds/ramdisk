@@ -1,0 +1,11 @@
+#!/bin/sh
+${CVI_SHOPTS}
+
+case "$1" in
+start)
+	insmod /system/ko/aic8800_bsp.ko
+	sleep 1s;
+	insmod /system/ko/aic8800_fdrv.ko
+	insmod /system/ko/aic8800_btlpm.ko
+	;;
+esac
