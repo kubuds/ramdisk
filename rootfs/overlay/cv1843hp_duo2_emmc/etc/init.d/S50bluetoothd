@@ -1,0 +1,18 @@
+#!/bin/sh
+${CVI_SHOPTS}
+
+case "$1" in
+start)
+	if ! [ -f /usr/libexec/bluetooth/bluetoothd ]; then
+		exit 0
+	fi
+
+	start-stop-daemon -bS -p /var/run/bluetoothd.pid -m \
+		/usr/libexec/bluetooth/bluetoothd
+	exit $?
+	;;
+stop)
+	start-stop-daemon -K -p /var/run/bluetoothd.pid
+	exit $?
+	;;
+esac
